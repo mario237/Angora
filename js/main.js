@@ -1,71 +1,92 @@
-var headerElement = document.getElementById('homeSection');
-var topNavbar = document.getElementById('topNav');
-var navItems = document.querySelectorAll('.nav-menu ul li a');
-var navLogo = document.getElementById('navLogo');
-var allSections = document.querySelectorAll('section');
-var navbar = document.querySelector('nav');
-
-
-function elementInViewport(el) {
-    var top = el.offsetTop;
-    var height = el.offsetHeight;
-  
-    while(el.offsetParent) {
-      el = el.offsetParent;
-      top += el.offsetTop;
+//Hide Loading when page is loaded
+$(window).on('load', () => {
+    if ($('.page-load').length) {
+        $('.page-load').delay(100).fadeOut('slow', () => {
+            $(this).remove();
+        });
     }
-  
-    return (
-      top < (window.pageYOffset + window.innerHeight) &&
-      (top + height) > window.pageYOffset
-    );
-}
+});
 
 
+//change header background color
+$(window).on('scroll', () => {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        $('.navbar').addClass('sticky');
+    } else {
+        $('.navbar').removeClass('sticky');
+    }
+});
 
-function toggleActiveState(){
-    
-    navbar.classList.toggle('sticky' , window.scrollY > 0);
 
-    if(elementInViewport(headerElement)){
-        removeAllActiveClasses();
-        addActiveClass('homeSection');
-    }else{
-        var scrollPosition = document.documentElement.scrollTop;
+//Hide Loading when page is loaded
+$(window).on('load', () => {
+    if ($('.page-load').length) {
+        $('.page-load').delay(100).fadeOut('slow', () => {
+            $(this).remove();
+        });
+    }
+});
 
-        allSections.forEach(section => {
-            if (
-                scrollPosition >= section.offsetTop - section.offsetHeight * 0.25 &&
-                scrollPosition <
-                section.offsetTop + section.offsetHeight - section.offsetHeight * 0.25
-            ) {
-                var currId = section.attributes.id.value;
-                removeAllActiveClasses();
-                addActiveClass(currId);
+
+//show or hide scroll to top btn & change header background color
+$(window).on('scroll' , () => {
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        $('.scroll-to-top').css('display', 'flex');
+        $('header').css('background', 'rgba(40, 58, 90, 0.9)');
+    } else {
+        $('.scroll-to-top').css('display', 'none');
+        $('header').css('background', '#37517e');
+
+    }
+});
+
+
+//active navbar Anchors when scroll
+
+const listOfSections = $('section');
+
+$(window).on('scroll',()=> {
+
+    let currentPosition = $(this).scrollTop() + 200;
+
+    listOfSections.each(function () {
+        let sectionTop = $(this).offset().top,
+            sectionBottom = sectionTop + $(this).outerHeight();
+
+        if (currentPosition >= sectionTop && currentPosition <= sectionBottom) {
+            if (currentPosition <= sectionBottom) {
+                $('.navbar ul li a').removeClass('active');
             }
-        })
-    }
-
-   
-    
-}
-
-function removeAllActiveClasses() {
-    document.querySelectorAll('.nav-menu ul li a').forEach(link => {
-
-        link.classList.remove('active');
-
+            $('a[href="#' + $(this).attr('id') + '"]').addClass('active');
+        }
+        
     })
 }
+) 
 
-function addActiveClass(id) {
-    var selectedLink = `.nav-menu ul li a[href="#${id}"]`;
-    document.querySelector(selectedLink).classList.add("active");
-}
-  
-  window.addEventListener('scroll' , toggleActiveState);
 
-  
+//scroll To Section when nav anchor clicked
+$('.navbar ul li a').on('click', function(event){
+    event.preventDefault(); 
+    
+    let sectionID = $(this).attr('href');
+
+    let sectionPosition = $(sectionID).offset().top;
+
+
+    //hide navbar in mobile and change navbar icon
+    $(".navbar-collapse").collapse('hide');
+
+    //scroll to section smoothly
+    $('html , body').animate({
+        scrollTop: sectionPosition
+    },1100);
+    
+   
+})
+
+
+
   function scrollToTop() {
     var position = document.body.scrollTop = 0;
     window.scroll({
@@ -75,3 +96,4 @@ function addActiveClass(id) {
 
 }
 
+git
