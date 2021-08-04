@@ -15,7 +15,6 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
 }
 
-
 /*Page Loading*/
 
 .page-load {
@@ -53,7 +52,6 @@ h1, h2, h3, h4, h5, h6 {
 
 /****** navbar ******/
 
-
 .nav-menu ul li {
     padding-right: 30px;
 }
@@ -76,17 +74,17 @@ h1, h2, h3, h4, h5, h6 {
     color: #f25454;
 }
 
-.sticky{
+.sticky {
     width: 100vw;
     background-color: white;
     transition: all 0.5s;
 }
 
-.sticky ul li a{
+.sticky ul li a {
     color: black;
 }
 
-.sticky .logo img{
+.sticky .logo img {
     content: url(../img/logo-red.png);
 }
 
@@ -114,10 +112,11 @@ header {
     width: 100vw;
 }
 
-.carousel-caption{
-    top:10%;
+.carousel-caption {
+    top: 10%;
 }
-.carousel-caption h2{
+
+.carousel-caption h2 {
     font-size: 60px;
     font-weight: 700;
     color: white;
@@ -138,7 +137,7 @@ header {
     transition: all 0.5s;
 }
 
-.control-slider .next-slide::before{
+.control-slider .next-slide::before {
     content: '';
     position: absolute;
     top: 0;
@@ -150,12 +149,12 @@ header {
     transition: all 0.5s;
 }
 
-.control-slider .next-slide:hover:before{
+.control-slider .next-slide:hover:before {
     width: 100%;
     opacity: 1;
 }
 
-.control-slider .prev-slide::before{
+.control-slider .prev-slide::before {
     content: '';
     position: absolute;
     top: 50%;
@@ -167,24 +166,24 @@ header {
     transition: all 0.5s;
 }
 
-.control-slider .prev-slide:hover:before{
+.control-slider .prev-slide:hover:before {
     width: 100%;
     opacity: 1;
 }
 
-.control-slider .next-slide i:hover{
+.control-slider .next-slide i:hover {
     position: relative;
     z-index: 1;
     color: black;
 }
 
-.control-slider .prev-slide i:hover{
+.control-slider .prev-slide i:hover {
     position: relative;
     z-index: 1;
     color: black;
 }
 
-.mouse-down{
+.mouse-down {
     position: absolute;
     width: 26px;
     height: 40px;
@@ -199,12 +198,11 @@ header {
     cursor: pointer;
 }
 
-.mouse-down a{
+.mouse-down a {
     display: block;
     width: 100%;
     height: 100%;
 }
-
 
 .mouse-down .ball {
     position: absolute;
@@ -222,33 +220,29 @@ header {
     animation: scroll 3s infinite ease;
 }
 
-@keyframes scroll{
-    0%{
+@keyframes scroll {
+    0% {
         top: 30%;
     }
-    25%{
+    25% {
         top: 40%
     }
-
-    50%{
+    50% {
         top: 50%
     }
-
-    75%{
+    75% {
         top: 60%
     }
-
-    100%{
+    100% {
         top: 70%
     }
-
 }
 
-.mouse-down:hover{
+.mouse-down:hover {
     border-color: #f25454;
 }
 
-.mouse-down:hover .ball{
+.mouse-down:hover .ball {
     background-color: #f25454;
 }
 
@@ -292,9 +286,54 @@ header {
     font-size: 14px;
 }
 
+/*******Skill bar ******/
+.skills-card span{
+    opacity: 0;
+    animation: showSkillName 1s  linear forwards;
+}
+
+@keyframes showSkillName {
+    100%{
+      opacity: 1;
+    }
+  }
+
 .progress-bar {
     background-color: #f25454;
-    display: flex;
+    position: relative;
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: animate 1.5s cubic-bezier(1,0,0.5,1) forwards;
+}
+
+@keyframes animate {
+    100%{
+      transform: scaleX(1);
+    }
+  }
+
+.progress-bar.branding::after {
+    content: "80%";
+    position: absolute;
+    right: 5px;
+}
+
+.progress-bar.web::after {
+    content: "95%";
+    position: absolute;
+    right: 5px;
+}
+
+.progress-bar.graphic::after {
+    content: "85%";
+    position: absolute;
+    right: 5px;
+}
+
+.progress-bar.develop::after {
+    content: "70%";
+    position: absolute;
+    right: 5px;
 }
 
 /*******team section ******/
@@ -307,7 +346,6 @@ header {
 .member-image img {
     transition: all 0.6s;
 }
-
 
 .member:hover .social-layer {
     opacity: 1;
@@ -393,29 +431,31 @@ header {
 }
 
 /***** Client Reviews section *****/
-.client-image img{
+
+.client-image img {
     width: 10%;
     height: 10%;
 }
 
-.client-info h3{
+.client-info h3 {
     font-size: 18px;
     margin-top: 5px;
     margin-bottom: 0px;
 }
-.client-comment{
+
+.client-comment {
     margin-top: 30px;
 }
-.client-comment p{
+
+.client-comment p {
     color: #666;
     font-size: 25px;
     line-height: 1.5em;
 }
 
-.client-comment p i{
+.client-comment p i {
     font-weight: 900;
 }
-
 
 /***** Contact section *****/
 
@@ -589,14 +629,13 @@ footer {
     nav .navbar-toggler i {
         color: black;
     }
-    #navLogo{
-        content:url("../img/logo-red.png");
+    #navLogo {
+        content: url("../img/logo-red.png");
     }
     .nav-menu {
         flex-direction: column;
         background-color: white;
     }
-
     .nav-menu ul {
         flex-direction: column;
     }
@@ -609,7 +648,7 @@ footer {
     .social-icons {
         display: none;
     }
-    .carousel-caption h2{
+    .carousel-caption h2 {
         font-size: 25px;
     }
 }
